@@ -520,6 +520,9 @@ ul {
     grid-template-columns: 1fr 1fr;
     gap: var(--spacing-xl);
     margin-top: var(--spacing-xl);
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .contact-form-container,
@@ -815,6 +818,9 @@ ul {
     /* Contact */
     .contact-grid {
         grid-template-columns: 1fr;
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
     }
     
     /* Newsletter Form */
