@@ -161,6 +161,10 @@ ul {
     cursor: pointer;
     padding: 10px;
     transition: var(--transition-smooth);
+    /* Better touch target for mobile */
+    min-width: 44px;
+    min-height: 44px;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .hamburger-line {
@@ -742,6 +746,8 @@ ul {
         display: flex;
         z-index: 1001;
         position: relative;
+        /* Ensure it's tappable on mobile */
+        touch-action: manipulation;
     }
     
     .nav-menu {
@@ -758,10 +764,20 @@ ul {
         transition: right 0.3s ease-in-out;
         align-items: flex-start;
         z-index: 1000;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
     }
     
     .nav-menu.active {
         right: 0;
+    }
+    
+    /* Better touch targets for mobile links */
+    .nav-menu .nav-link {
+        padding: 12px 0;
+        display: block;
+        width: 100%;
+        -webkit-tap-highlight-color: transparent;
     }
     
     /* Logo size for mobile */

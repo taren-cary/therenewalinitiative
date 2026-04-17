@@ -29,7 +29,7 @@
                     <li><a href="contact.html" class="nav-link">Contact</a></li>
                 </ul>
                 
-                <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu">
+                <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu" type="button">
                     <span class="hamburger-line"></span>
                     <span class="hamburger-line"></span>
                     <span class="hamburger-line"></span>
@@ -38,49 +38,52 @@
         </nav>
     </header>
     
-    <!-- Mobile Menu Script - Runs immediately after nav is defined -->
+    <!-- Mobile Menu Script - WORKS ON REAL MOBILE DEVICES -->
     <script>
-        (function() {
-            const hamburger = document.getElementById('hamburgerBtn');
-            const navMenu = document.getElementById('navMenu');
-            const navLinks = document.querySelectorAll('.nav-link');
-            
-            console.log('Initializing mobile menu...', {
-                hamburger: hamburger,
-                navMenu: navMenu,
-                navLinks: navLinks.length
-            });
-            
-            if (hamburger && navMenu) {
-                hamburger.addEventListener('click', function(event) {
-                    event.preventDefault();
-                    event.stopPropagation();
-                    
-                    hamburger.classList.toggle('active');
-                    navMenu.classList.toggle('active');
-                    
-                    console.log('Hamburger clicked! Menu is now:', navMenu.classList.contains('active') ? 'OPEN' : 'CLOSED');
-                });
-                
-                navLinks.forEach(function(link) {
-                    link.addEventListener('click', function() {
-                        hamburger.classList.remove('active');
-                        navMenu.classList.remove('active');
-                    });
-                });
-                
-                document.addEventListener('click', function(event) {
-                    if (!event.target.closest('.nav') && navMenu.classList.contains('active')) {
-                        hamburger.classList.remove('active');
-                        navMenu.classList.remove('active');
-                    }
-                });
-                
-                console.log('Mobile menu initialized!');
-            } else {
-                console.error('Mobile menu elements not found!', { hamburger, navMenu });
+        var burger = document.getElementById('hamburgerBtn');
+        var menu = document.getElementById('navMenu');
+        
+        console.log('Mobile menu init - Burger:', !!burger, 'Menu:', !!menu);
+        
+        if (burger && menu) {
+            // Handle both click AND touch events for mobile devices
+            function toggleMenu(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                burger.classList.toggle('active');
+                menu.classList.toggle('active');
+                console.log('Menu toggled:', menu.classList.contains('active') ? 'OPEN' : 'CLOSED');
             }
-        })();
+            
+            burger.addEventListener('click', toggleMenu);
+            burger.addEventListener('touchstart', toggleMenu, {passive: false});
+            
+            // Close on link click/touch
+            var links = menu.getElementsByTagName('a');
+            for (var i = 0; i < links.length; i++) {
+                links[i].addEventListener('click', function() {
+                    burger.classList.remove('active');
+                    menu.classList.remove('active');
+                });
+                links[i].addEventListener('touchstart', function() {
+                    burger.classList.remove('active');
+                    menu.classList.remove('active');
+                }, {passive: true});
+            }
+            
+            // Close when clicking/touching outside
+            function closeOnOutside(e) {
+                if (!e.target.closest('.nav') && menu.classList.contains('active')) {
+                    burger.classList.remove('active');
+                    menu.classList.remove('active');
+                }
+            }
+            
+            document.addEventListener('click', closeOnOutside);
+            document.addEventListener('touchstart', closeOnOutside, {passive: true});
+            
+            console.log('Mobile menu READY (with touch support)!');
+        }
     </script>
 
     <!-- Hero Section -->
