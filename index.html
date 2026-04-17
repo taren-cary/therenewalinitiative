@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Renewal Initiative - Home</title>
+    <meta name="description" content="Strengthening communities through economic revitalization, public safety, and holistic well-being.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <a href="index.html" class="nav-logo">
+                    <img src="assets/The Renewal Initiative Logo.svg" alt="The Renewal Initiative Logo">
+                </a>
+                
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link active">Home</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+                
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <main>
+        <section class="hero">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <h1 class="hero-title">Renewing Our Community<br>Starts Here & Now</h1>
+                <p class="hero-subtitle">Events Coming Soon</p>
+                
+                <form id="hero-newsletter-form" class="hero-form">
+                    <div class="form-group">
+                        <input 
+                            type="email" 
+                            id="hero-email" 
+                            name="email" 
+                            placeholder="Enter your email address" 
+                            required
+                            class="input-field"
+                        >
+                        <button type="submit" class="btn btn-primary">
+                            <span class="btn-text">Subscribe</span>
+                            <span class="btn-loader" style="display: none;">
+                                <svg class="spinner" viewBox="0 0 24 24">
+                                    <circle class="spinner-circle" cx="12" cy="12" r="10"></circle>
+                                </svg>
+                            </span>
+                        </button>
+                    </div>
+                    <p class="form-message" style="display: none;"></p>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3 class="footer-title">The Renewal Initiative</h3>
+                <p class="footer-text">Strengthening communities through collaborative partnerships and comprehensive solutions.</p>
+            </div>
+            
+            <div class="footer-section">
+                <h4 class="footer-heading">Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html" class="footer-link">Home</a></li>
+                    <li><a href="about.html" class="footer-link">About</a></li>
+                    <li><a href="contact.html" class="footer-link">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4 class="footer-heading">Contact</h4>
+                <ul class="footer-contact">
+                    <li>Adrien Jones</li>
+                    <li><a href="tel:240-736-6168" class="footer-link">240-736-6168</a></li>
+                    <li><a href="mailto:iamadriantjones@gmail.com" class="footer-link">iamadriantjones@gmail.com</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2026 The Renewal Initiative. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast" style="display: none;">
+        <div class="toast-content">
+            <svg class="toast-icon" viewBox="0 0 24 24">
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+            </svg>
+            <span class="toast-message"></span>
+        </div>
+        <button class="toast-close" aria-label="Close notification">&times;</button>
+    </div>
+
+    <!-- Scripts -->
+    <!-- Mobile Menu Script - Standalone for immediate functionality -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            if (hamburger && navMenu) {
+                // Toggle mobile menu
+                hamburger.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    hamburger.classList.toggle('active');
+                    navMenu.classList.toggle('active');
+                    console.log('Hamburger clicked, menu active:', navMenu.classList.contains('active'));
+                });
+                
+                // Close mobile menu when clicking on a link
+                navLinks.forEach(function(link) {
+                    link.addEventListener('click', function() {
+                        hamburger.classList.remove('active');
+                        navMenu.classList.remove('active');
+                    });
+                });
+                
+                // Close mobile menu when clicking outside
+                document.addEventListener('click', function(e) {
+                    if (!e.target.closest('.nav') && navMenu.classList.contains('active')) {
+                        hamburger.classList.remove('active');
+                        navMenu.classList.remove('active');
+                    }
+                });
+            }
+        });
+    </script>
+    <script type="module" src="js/supabase-client.js"></script>
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>
