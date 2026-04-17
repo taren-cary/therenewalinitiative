@@ -23,13 +23,13 @@
                     <img src="assets/The Renewal Initiative Logo.svg" alt="The Renewal Initiative Logo">
                 </a>
                 
-                <ul class="nav-menu">
+                <ul class="nav-menu" id="navMenu">
                     <li><a href="index.html" class="nav-link active">Home</a></li>
                     <li><a href="about.html" class="nav-link">About</a></li>
                     <li><a href="contact.html" class="nav-link">Contact</a></li>
                 </ul>
                 
-                <button class="hamburger" aria-label="Toggle menu">
+                <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu">
                     <span class="hamburger-line"></span>
                     <span class="hamburger-line"></span>
                     <span class="hamburger-line"></span>
@@ -37,6 +37,51 @@
             </div>
         </nav>
     </header>
+    
+    <!-- Mobile Menu Script - Runs immediately after nav is defined -->
+    <script>
+        (function() {
+            const hamburger = document.getElementById('hamburgerBtn');
+            const navMenu = document.getElementById('navMenu');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            console.log('Initializing mobile menu...', {
+                hamburger: hamburger,
+                navMenu: navMenu,
+                navLinks: navLinks.length
+            });
+            
+            if (hamburger && navMenu) {
+                hamburger.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    
+                    hamburger.classList.toggle('active');
+                    navMenu.classList.toggle('active');
+                    
+                    console.log('Hamburger clicked! Menu is now:', navMenu.classList.contains('active') ? 'OPEN' : 'CLOSED');
+                });
+                
+                navLinks.forEach(function(link) {
+                    link.addEventListener('click', function() {
+                        hamburger.classList.remove('active');
+                        navMenu.classList.remove('active');
+                    });
+                });
+                
+                document.addEventListener('click', function(event) {
+                    if (!event.target.closest('.nav') && navMenu.classList.contains('active')) {
+                        hamburger.classList.remove('active');
+                        navMenu.classList.remove('active');
+                    }
+                });
+                
+                console.log('Mobile menu initialized!');
+            } else {
+                console.error('Mobile menu elements not found!', { hamburger, navMenu });
+            }
+        })();
+    </script>
 
     <!-- Hero Section -->
     <main>
@@ -115,71 +160,6 @@
     </div>
 
     <!-- Scripts -->
-    <!-- Mobile Menu Script - Standalone for immediate functionality -->
-    <script>
-        // Ensure script runs after DOM is fully loaded
-        (function() {
-            function initMobileMenu() {
-                const hamburger = document.querySelector('.hamburger');
-                const navMenu = document.querySelector('.nav-menu');
-                const navLinks = document.querySelectorAll('.nav-link');
-                
-                console.log('Mobile menu init:', { hamburger: !!hamburger, navMenu: !!navMenu, linksCount: navLinks.length });
-                
-                if (!hamburger || !navMenu) {
-                    console.error('Mobile menu elements not found!');
-                    return;
-                }
-                
-                // Toggle mobile menu
-                hamburger.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    const isActive = navMenu.classList.contains('active');
-                    
-                    if (isActive) {
-                        hamburger.classList.remove('active');
-                        navMenu.classList.remove('active');
-                    } else {
-                        hamburger.classList.add('active');
-                        navMenu.classList.add('active');
-                    }
-                    
-                    console.log('Menu toggled. Active:', !isActive);
-                });
-                
-                // Close mobile menu when clicking on a link
-                navLinks.forEach(function(link) {
-                    link.addEventListener('click', function() {
-                        hamburger.classList.remove('active');
-                        navMenu.classList.remove('active');
-                        console.log('Menu closed via link click');
-                    });
-                });
-                
-                // Close mobile menu when clicking outside
-                document.addEventListener('click', function(e) {
-                    const isNavClick = e.target.closest('.nav');
-                    const isMenuActive = navMenu.classList.contains('active');
-                    
-                    if (!isNavClick && isMenuActive) {
-                        hamburger.classList.remove('active');
-                        navMenu.classList.remove('active');
-                        console.log('Menu closed via outside click');
-                    }
-                });
-                
-                console.log('Mobile menu initialized successfully!');
-            }
-            
-            // Initialize when DOM is ready
-            if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', initMobileMenu);
-            } else {
-                initMobileMenu();
-            }
-        })();
-    </script>
     <script type="module" src="js/supabase-client.js"></script>
     <script type="module" src="js/main.js"></script>
 </body>
