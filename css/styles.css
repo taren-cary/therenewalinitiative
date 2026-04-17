@@ -120,6 +120,8 @@ ul {
 .nav-logo img {
     height: 100px;
     width: auto;
+    filter: none;
+    box-shadow: none;
 }
 
 .nav-menu {
@@ -266,6 +268,11 @@ ul {
     background-color: var(--white);
     transition: var(--transition-smooth);
     outline: none;
+}
+
+.input-field::placeholder {
+    font-size: 0.9375rem;
+    color: #a0aec0;
 }
 
 .input-field:focus {
@@ -791,6 +798,8 @@ ul {
     /* Logo size for mobile */
     .nav-logo img {
         height: 70px;
+        filter: none;
+        box-shadow: none;
     }
     
     /* Hero */
@@ -849,6 +858,16 @@ ul {
     }
     
     .info-title {
+        font-size: 0.9375rem;
+    }
+    
+    /* Smaller placeholder text on mobile */
+    .input-field::placeholder {
+        font-size: 0.8125rem;
+    }
+    
+    .input-field {
+        padding: 0.875rem;
         font-size: 0.9375rem;
     }
     
