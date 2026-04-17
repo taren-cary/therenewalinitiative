@@ -207,18 +207,35 @@
     <!-- Scripts -->
     <!-- Mobile Menu Script - Standalone for immediate functionality -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const hamburger = document.querySelector('.hamburger');
-            const navMenu = document.querySelector('.nav-menu');
-            const navLinks = document.querySelectorAll('.nav-link');
-            
-            if (hamburger && navMenu) {
+        // Ensure script runs after DOM is fully loaded
+        (function() {
+            function initMobileMenu() {
+                const hamburger = document.querySelector('.hamburger');
+                const navMenu = document.querySelector('.nav-menu');
+                const navLinks = document.querySelectorAll('.nav-link');
+                
+                console.log('Mobile menu init:', { hamburger: !!hamburger, navMenu: !!navMenu, linksCount: navLinks.length });
+                
+                if (!hamburger || !navMenu) {
+                    console.error('Mobile menu elements not found!');
+                    return;
+                }
+                
                 // Toggle mobile menu
                 hamburger.addEventListener('click', function(e) {
+                    e.preventDefault();
                     e.stopPropagation();
-                    hamburger.classList.toggle('active');
-                    navMenu.classList.toggle('active');
-                    console.log('Hamburger clicked, menu active:', navMenu.classList.contains('active'));
+                    const isActive = navMenu.classList.contains('active');
+                    
+                    if (isActive) {
+                        hamburger.classList.remove('active');
+                        navMenu.classList.remove('active');
+                    } else {
+                        hamburger.classList.add('active');
+                        navMenu.classList.add('active');
+                    }
+                    
+                    console.log('Menu toggled. Active:', !isActive);
                 });
                 
                 // Close mobile menu when clicking on a link
@@ -226,18 +243,32 @@
                     link.addEventListener('click', function() {
                         hamburger.classList.remove('active');
                         navMenu.classList.remove('active');
+                        console.log('Menu closed via link click');
                     });
                 });
                 
                 // Close mobile menu when clicking outside
                 document.addEventListener('click', function(e) {
-                    if (!e.target.closest('.nav') && navMenu.classList.contains('active')) {
+                    const isNavClick = e.target.closest('.nav');
+                    const isMenuActive = navMenu.classList.contains('active');
+                    
+                    if (!isNavClick && isMenuActive) {
                         hamburger.classList.remove('active');
                         navMenu.classList.remove('active');
+                        console.log('Menu closed via outside click');
                     }
                 });
+                
+                console.log('Mobile menu initialized successfully!');
             }
-        });
+            
+            // Initialize when DOM is ready
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initMobileMenu);
+            } else {
+                initMobileMenu();
+            }
+        })();
     </script>
     <script type="module" src="js/supabase-client.js"></script>
     <script type="module" src="js/main.js"></script>

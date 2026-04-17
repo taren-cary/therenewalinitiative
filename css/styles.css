@@ -111,14 +111,14 @@ ul {
 .nav-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: var(--spacing-sm) var(--spacing-md);
+    padding: var(--spacing-md) var(--spacing-md);
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 .nav-logo img {
-    height: 80px;
+    height: 100px;
     width: auto;
 }
 
@@ -155,15 +155,16 @@ ul {
 .hamburger {
     display: none;
     flex-direction: column;
-    gap: 5px;
+    gap: 6px;
     background: none;
     border: none;
     cursor: pointer;
-    padding: var(--spacing-xs);
+    padding: 10px;
+    transition: var(--transition-smooth);
 }
 
 .hamburger-line {
-    width: 25px;
+    width: 28px;
     height: 3px;
     background-color: var(--primary-navy);
     transition: var(--transition-smooth);
@@ -740,20 +741,21 @@ ul {
     .hamburger {
         display: flex;
         z-index: 1001;
+        position: relative;
     }
     
     .nav-menu {
         position: fixed;
-        top: 92px;
+        top: 100px;
         right: -100%;
         width: 70%;
         max-width: 300px;
-        height: calc(100vh - 92px);
+        height: calc(100vh - 100px);
         background-color: var(--white);
         flex-direction: column;
         padding: var(--spacing-lg);
         box-shadow: var(--shadow-lg);
-        transition: var(--transition-smooth);
+        transition: right 0.3s ease-in-out;
         align-items: flex-start;
         z-index: 1000;
     }
@@ -764,7 +766,7 @@ ul {
     
     /* Logo size for mobile */
     .nav-logo img {
-        height: 60px;
+        height: 70px;
     }
     
     /* Hero */
