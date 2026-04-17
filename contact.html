@@ -58,17 +58,16 @@
             burger.addEventListener('click', toggleMenu);
             burger.addEventListener('touchstart', toggleMenu, {passive: false});
             
-            // Close on link click/touch
+            // Close menu on link click - DON'T prevent navigation!
             var links = menu.getElementsByTagName('a');
             for (var i = 0; i < links.length; i++) {
-                links[i].addEventListener('click', function() {
+                links[i].addEventListener('click', function(e) {
+                    // Just close the menu, let the link navigate normally
                     burger.classList.remove('active');
                     menu.classList.remove('active');
+                    console.log('Link clicked, menu closing, navigating...');
+                    // Don't preventDefault - let navigation happen!
                 });
-                links[i].addEventListener('touchstart', function() {
-                    burger.classList.remove('active');
-                    menu.classList.remove('active');
-                }, {passive: true});
             }
             
             // Close when clicking/touching outside
