@@ -804,9 +804,8 @@ ul {
     /* Logo size for mobile */
     .nav-logo img {
         height: 70px;
-        filter: none !important;
-        box-shadow: none !important;
-        -webkit-filter: none !important;
+        filter: none;
+        box-shadow: none;
     }
     
     /* Hero */
