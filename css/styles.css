@@ -226,10 +226,11 @@ ul {
 .hero-title {
     font-family: var(--font-heading);
     font-weight: 800;
-    font-size: 3rem;
+    font-size: 3.75rem;
     line-height: 1.2;
     margin-bottom: var(--spacing-md);
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+    white-space: nowrap;
 }
 
 .hero-subtitle {
@@ -811,6 +812,7 @@ ul {
     /* Hero */
     .hero-title {
         font-size: 2rem;
+        white-space: normal;
     }
     
     .hero-subtitle {
