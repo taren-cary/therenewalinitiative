@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Involved - The Renewal Initiative</title>
+    <meta name="description" content="Join The Renewal Initiative. Volunteer, partner, or contribute to strengthen our community.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <a href="index.html" class="nav-logo">
+                    <img src="assets/TRILogoHorizontal.svg" alt="The Renewal Initiative Logo">
+                </a>
+
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="about.html" class="nav-link">The Vision</a></li>
+                    <li><a href="get-involved.html" class="nav-link active">Get Involved</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+
+                <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu" type="button">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Mobile Menu Script - WORKS ON REAL MOBILE DEVICES -->
+    <script>
+        var burger = document.getElementById('hamburgerBtn');
+        var menu = document.getElementById('navMenu');
+
+        if (burger && menu) {
+            function toggleMenu(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                burger.classList.toggle('active');
+                menu.classList.toggle('active');
+            }
+
+            burger.addEventListener('click', toggleMenu);
+            burger.addEventListener('touchstart', toggleMenu, {passive: false});
+
+            var links = menu.getElementsByTagName('a');
+            for (var i = 0; i < links.length; i++) {
+                links[i].addEventListener('click', function(e) {
+                    burger.classList.remove('active');
+                    menu.classList.remove('active');
+                });
+            }
+
+            function closeOnOutside(e) {
+                if (!e.target.closest('.nav') && menu.classList.contains('active')) {
+                    burger.classList.remove('active');
+                    menu.classList.remove('active');
+                }
+            }
+
+            document.addEventListener('click', closeOnOutside);
+            document.addEventListener('touchstart', closeOnOutside, {passive: true});
+        }
+    </script>
+
+    <!-- Get Involved Section -->
+    <main>
+        <section class="get-involved-section">
+            <div class="container">
+                <h1 class="section-title">Get Involved</h1>
+                <p class="section-subtitle">Ready to make a difference? Tell us how you'd like to contribute and we'll be in touch.</p>
+
+                <div class="get-involved-form-container">
+                    <form id="get-involved-form" class="get-involved-form">
+
+                        <!-- Personal Info -->
+                        <div class="gi-field-group">
+                            <h2 class="gi-group-title">Your Information</h2>
+                            <div class="form-row two-col">
+                                <div class="form-group">
+                                    <label for="gi-name" class="form-label">Full Name *</label>
+                                    <input type="text" id="gi-name" name="full_name" placeholder="Your full name" required class="input-field">
+                                </div>
+                                <div class="form-group">
+                                    <label for="gi-email" class="form-label">Email Address *</label>
+                                    <input type="email" id="gi-email" name="email" placeholder="your.email@example.com" required class="input-field">
+                                </div>
+                            </div>
+                            <div class="form-row two-col">
+                                <div class="form-group">
+                                    <label for="gi-phone" class="form-label">Phone Number <span class="optional">(optional)</span></label>
+                                    <input type="tel" id="gi-phone" name="phone" placeholder="(555) 555-5555" class="input-field">
+                                </div>
+                                <div class="form-group">
+                                    <label for="gi-zip" class="form-label">Zip Code <span class="optional">(optional)</span></label>
+                                    <input type="text" id="gi-zip" name="zip_code" placeholder="20001" class="input-field">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- How to Get Involved -->
+                        <div class="gi-field-group">
+                            <h2 class="gi-group-title">How Would You Like to Help? *</h2>
+                            <p class="gi-group-hint">Select all that apply.</p>
+                            <div class="checkbox-grid">
+                                <label class="checkbox-card">
+                                    <input type="checkbox" name="involvement_types" value="volunteer">
+                                    <span class="checkbox-icon">🤝</span>
+                                    <span class="checkbox-label">Volunteer My Time</span>
+                                </label>
+                                <label class="checkbox-card">
+                                    <input type="checkbox" name="involvement_types" value="donate">
+                                    <span class="checkbox-icon">💛</span>
+                                    <span class="checkbox-label">Make a Contribution</span>
+                                </label>
+                                <label class="checkbox-card">
+                                    <input type="checkbox" name="involvement_types" value="partner">
+                                    <span class="checkbox-icon">🏢</span>
+                                    <span class="checkbox-label">Business / Partnership</span>
+                                </label>
+                                <label class="checkbox-card">
+                                    <input type="checkbox" name="involvement_types" value="events">
+                                    <span class="checkbox-icon">📅</span>
+                                    <span class="checkbox-label">Attend Community Events</span>
+                                </label>
+                                <label class="checkbox-card">
+                                    <input type="checkbox" name="involvement_types" value="awareness">
+                                    <span class="checkbox-icon">📢</span>
+                                    <span class="checkbox-label">Spread Awareness</span>
+                                </label>
+                                <label class="checkbox-card">
+                                    <input type="checkbox" name="involvement_types" value="other">
+                                    <span class="checkbox-icon">✨</span>
+                                    <span class="checkbox-label">Other</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Areas of Interest -->
+                        <div class="gi-field-group">
+                            <h2 class="gi-group-title">Areas of Interest</h2>
+                            <p class="gi-group-hint">Which programs are you most passionate about?</p>
+                            <div class="checkbox-grid">
+                                <label class="checkbox-card">
+                                    <input type="checkbox" name="interest_areas" value="drug_prevention">
+                                    <span class="checkbox-icon">🌿</span>
+                                    <span class="checkbox-label">Drug Prevention & Treatment</span>
+                                </label>
+                                <label class="checkbox-card">
+                                    <input type="checkbox" name="interest_areas" value="public_safety">
+                                    <span class="checkbox-icon">🛡️</span>
+                                    <span class="checkbox-label">Crime Prevention & Safety</span>
+                                </label>
+                                <label class="checkbox-card">
+                                    <input type="checkbox" name="interest_areas" value="redevelopment">
+                                    <span class="checkbox-icon">🏘️</span>
+                                    <span class="checkbox-label">Community Redevelopment</span>
+                                </label>
+                                <label class="checkbox-card">
+                                    <input type="checkbox" name="interest_areas" value="reentry">
+                                    <span class="checkbox-icon">🔑</span>
+                                    <span class="checkbox-label">Reentry & Workforce</span>
+                                </label>
+                                <label class="checkbox-card">
+                                    <input type="checkbox" name="interest_areas" value="health">
+                                    <span class="checkbox-icon">❤️</span>
+                                    <span class="checkbox-label">Health & Wellness</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Availability -->
+                        <div class="gi-field-group">
+                            <h2 class="gi-group-title">Availability</h2>
+                            <p class="gi-group-hint">When are you generally available? Select all that apply.</p>
+                            <div class="checkbox-grid checkbox-grid--small">
+                                <label class="checkbox-card">
+                                    <input type="checkbox" name="availability" value="weekday_mornings">
+                                    <span class="checkbox-label">Weekday Mornings</span>
+                                </label>
+                                <label class="checkbox-card">
+                                    <input type="checkbox" name="availability" value="weekday_evenings">
+                                    <span class="checkbox-label">Weekday Evenings</span>
+                                </label>
+                                <label class="checkbox-card">
+                                    <input type="checkbox" name="availability" value="weekends">
+                                    <span class="checkbox-label">Weekends</span>
+                                </label>
+                                <label class="checkbox-card">
+                                    <input type="checkbox" name="availability" value="flexible">
+                                    <span class="checkbox-label">Flexible / As Needed</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Skills -->
+                        <div class="gi-field-group">
+                            <h2 class="gi-group-title">Skills & Background <span class="optional">(optional)</span></h2>
+                            <div class="form-group">
+                                <textarea id="gi-skills" name="skills" placeholder="e.g. Social work, event planning, marketing, construction, healthcare..." rows="3" class="input-field textarea-field"></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Message -->
+                        <div class="gi-field-group">
+                            <h2 class="gi-group-title">Anything Else? <span class="optional">(optional)</span></h2>
+                            <div class="form-group">
+                                <textarea id="gi-message" name="message" placeholder="Share anything else you'd like us to know..." rows="4" class="input-field textarea-field"></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Referral -->
+                        <div class="gi-field-group">
+                            <h2 class="gi-group-title">How Did You Hear About Us?</h2>
+                            <div class="form-group">
+                                <select id="gi-referral" name="referral_source" class="input-field select-field">
+                                    <option value="" disabled selected>Select an option</option>
+                                    <option value="social_media">Social Media</option>
+                                    <option value="friend_family">Friend or Family</option>
+                                    <option value="community_event">Community Event</option>
+                                    <option value="flyer_poster">Flyer / Poster</option>
+                                    <option value="news_media">News / Media</option>
+                                    <option value="web_search">Web Search</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-large">
+                            <span class="btn-text">Submit</span>
+                            <span class="btn-loader" style="display: none;">
+                                <svg class="spinner" viewBox="0 0 24 24">
+                                    <circle class="spinner-circle" cx="12" cy="12" r="10"></circle>
+                                </svg>
+                            </span>
+                        </button>
+
+                        <p class="form-message" style="display: none;"></p>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4 class="footer-heading">Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html" class="footer-link">Home</a></li>
+                    <li><a href="about.html" class="footer-link">The Vision</a></li>
+                    <li><a href="get-involved.html" class="footer-link">Get Involved</a></li>
+                    <li><a href="contact.html" class="footer-link">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4 class="footer-heading">Contact</h4>
+                <ul class="footer-contact">
+                    <li>Adrien Jones</li>
+                    <li><a href="tel:240-736-6168" class="footer-link">240-736-6168</a></li>
+                    <li><a href="mailto:iamadriantjones@gmail.com" class="footer-link">iamadriantjones@gmail.com</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 The Renewal Initiative. All rights reserved.</p>
+            <p class="footer-legal">The Renewal Initiative is a 501(c)(3) nonprofit organization.</p>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast" style="display: none;">
+        <div class="toast-content">
+            <svg class="toast-icon" viewBox="0 0 24 24">
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+            </svg>
+            <span class="toast-message"></span>
+        </div>
+        <button class="toast-close" aria-label="Close notification">&times;</button>
+    </div>
+
+    <!-- Scripts -->
+    <script type="module" src="js/supabase-client.js"></script>
+    <script type="module" src="js/main.js"></script>
+    <script type="module" src="js/get-involved.js"></script>
+</body>
+</html>
