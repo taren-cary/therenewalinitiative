@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Renewal Initiative - Home</title>
-    <meta name="description" content="Strengthening communities through economic revitalization, public safety, and holistic well-being.">
-    
+    <title>Meet The Team - The Renewal Initiative</title>
+    <meta name="description" content="Meet the people behind The Renewal Initiative, dedicated to strengthening communities through service and leadership.">
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-    
+
     <!-- Stylesheet -->
     <link rel="stylesheet" href="css/styles.css">
 </head>
@@ -22,15 +22,15 @@
                 <a href="index.html" class="nav-logo">
                     <img src="assets/TRILogoHorizontal.svg" alt="The Renewal Initiative Logo">
                 </a>
-                
+
                 <ul class="nav-menu" id="navMenu">
-                    <li><a href="index.html" class="nav-link active">Home</a></li>
+                    <li><a href="index.html" class="nav-link">Home</a></li>
                     <li><a href="about.html" class="nav-link">The Vision</a></li>
-                    <li><a href="team.html" class="nav-link">Our Team</a></li>
+                    <li><a href="team.html" class="nav-link active">Our Team</a></li>
                     <li><a href="get-involved.html" class="nav-link">Get Involved</a></li>
                     <li><a href="contact.html" class="nav-link">Contact</a></li>
                 </ul>
-                
+
                 <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu" type="button">
                     <span class="hamburger-line"></span>
                     <span class="hamburger-line"></span>
@@ -39,71 +39,82 @@
             </div>
         </nav>
     </header>
-    
-    <!-- Mobile Menu Script - WORKS ON REAL MOBILE DEVICES -->
+
+    <!-- Mobile Menu Script -->
     <script>
         var burger = document.getElementById('hamburgerBtn');
         var menu = document.getElementById('navMenu');
-        
-        console.log('Mobile menu init - Burger:', !!burger, 'Menu:', !!menu);
-        
+
         if (burger && menu) {
-            // Handle both click AND touch events for mobile devices
             function toggleMenu(e) {
                 e.preventDefault();
                 e.stopPropagation();
                 burger.classList.toggle('active');
                 menu.classList.toggle('active');
-                console.log('Menu toggled:', menu.classList.contains('active') ? 'OPEN' : 'CLOSED');
             }
-            
+
             burger.addEventListener('click', toggleMenu);
             burger.addEventListener('touchstart', toggleMenu, {passive: false});
-            
-            // Close menu on link click - DON'T prevent navigation!
+
             var links = menu.getElementsByTagName('a');
             for (var i = 0; i < links.length; i++) {
                 links[i].addEventListener('click', function(e) {
-                    // Just close the menu, let the link navigate normally
                     burger.classList.remove('active');
                     menu.classList.remove('active');
-                    console.log('Link clicked, menu closing, navigating...');
-                    // Don't preventDefault - let navigation happen!
                 });
             }
-            
-            // Close when clicking/touching outside
+
             function closeOnOutside(e) {
                 if (!e.target.closest('.nav') && menu.classList.contains('active')) {
                     burger.classList.remove('active');
                     menu.classList.remove('active');
                 }
             }
-            
+
             document.addEventListener('click', closeOnOutside);
             document.addEventListener('touchstart', closeOnOutside, {passive: true});
-            
-            console.log('Mobile menu READY (with touch support)!');
         }
     </script>
 
-    <!-- Hero Section -->
-    <main>
-        <section class="hero">
-            <div class="hero-overlay"></div>
-            <div class="hero-content">
-                <h1 class="hero-title">Renewing Lives, Renewing Community</h1>
-<a href="get-involved.html" class="btn btn-hero-cta">Get Involved</a>
-                
-            </div>
-        </section>
+    <!-- Page Hero -->
+    <div class="page-hero page-hero--team">
+        <div class="container">
+            <h1 class="section-title">Meet The Team</h1>
+            <p class="section-subtitle">The people behind The Renewal Initiative — driven by purpose, rooted in community.</p>
+        </div>
+    </div>
 
-        <!-- Impact Strip -->
-        <section class="impact-strip">
+    <!-- Team Section -->
+    <main>
+        <section class="team-section">
             <div class="container">
-                <p class="impact-strip-quote">Real change starts at the local level.</p>
-                <p class="impact-strip-text">The Renewal Initiative is dedicated to transforming underserved neighborhoods into safe, healthy, and economically vibrant environments — where residents and businesses can truly thrive.</p>
-                <a href="about.html" class="btn btn-primary">Learn Our Vision</a>
+                <div class="team-member-card">
+
+                    <!-- Photo -->
+                    <div class="team-photo-col">
+                        <img src="assets/MrAdrian2.jpg" alt="Adrian Jones, Executive Director">
+                    </div>
+
+                    <!-- Info -->
+                    <div class="team-info-col">
+                        <span class="team-role-badge">Executive Director</span>
+                        <h2 class="team-name">Adrian Jones</h2>
+                        <div class="team-divider"></div>
+
+                        <blockquote class="team-quote">
+                            "Real change starts at the local level — and Adrian is dedicated to being part of that change, working alongside neighbors, partners, and leaders to build something that lasts."
+                        </blockquote>
+
+                        <div class="team-bio">
+                            <p>Adrian Jones is a devoted husband and proud father of four, deeply committed to family, community, and service. Guided throughout his life by a strong sense of responsibility to protect and uplift those around him, his firsthand concerns about the impact of drug use and crime on families and neighborhoods shaped his perspective — and fueled his drive to make a meaningful difference.</p>
+
+                            <p>With over 30 years of experience spanning both the public and private sectors, Adrian has developed a broad and deep understanding of systems, leadership, and cross-sector collaboration. Today, he is channeling that experience into what matters most: investing his time and energy into strengthening the communities he serves. He is passionate about advancing community development, promoting health and wellness, and advocating for a safer, cleaner environment for future generations.</p>
+
+                            <p>As Executive Director of The Renewal Initiative, Adrian works alongside neighbors, corporate business partners, and elected officials to realize the organization's vision — transforming underserved communities into safe, healthy, and economically vibrant environments where residents and businesses can truly thrive.</p>
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </section>
     </main>
@@ -121,7 +132,7 @@
                     <li><a href="contact.html" class="footer-link">Contact</a></li>
                 </ul>
             </div>
-            
+
             <div class="footer-section">
                 <h4 class="footer-heading">Contact</h4>
                 <ul class="footer-contact">
@@ -131,23 +142,12 @@
                 </ul>
             </div>
         </div>
-        
+
         <div class="footer-bottom">
             <p>&copy; 2026 The Renewal Initiative. All rights reserved.</p>
             <p class="footer-legal">The Renewal Initiative is a 501(c)(3) nonprofit organization.</p>
         </div>
     </footer>
-
-    <!-- Toast Notification -->
-    <div id="toast" class="toast" style="display: none;">
-        <div class="toast-content">
-            <svg class="toast-icon" viewBox="0 0 24 24">
-                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
-            </svg>
-            <span class="toast-message"></span>
-        </div>
-        <button class="toast-close" aria-label="Close notification">&times;</button>
-    </div>
 
     <!-- Scripts -->
     <script type="module" src="js/supabase-client.js"></script>

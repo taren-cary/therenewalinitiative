@@ -111,14 +111,14 @@ ul {
 .nav-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: var(--spacing-md) var(--spacing-md);
+    padding: 0.75rem var(--spacing-md);
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 .nav-logo img {
-    height: 100px;
+    height: 80px;
     width: auto;
     filter: none;
     box-shadow: none;
@@ -386,10 +386,86 @@ ul {
 /* ============================================
    About Section
    ============================================ */
+/* ============================================
+   Page Hero Banner (inner pages)
+   ============================================ */
+.page-hero {
+    background-color: var(--primary-navy);
+    padding: calc(80px + var(--spacing-2xl)) var(--spacing-md) var(--spacing-xl);
+    text-align: center;
+}
+
+.page-hero .section-title {
+    color: var(--white);
+}
+
+.page-hero .section-subtitle {
+    color: rgba(255, 255, 255, 0.75);
+    margin-top: var(--spacing-sm);
+    margin-bottom: 0;
+}
+
+.page-hero--vision {
+    background-image: linear-gradient(rgba(27, 38, 59, 0.72), rgba(27, 38, 59, 0.72)), url('../assets/annapolis.jpeg');
+    background-size: cover;
+    background-position: center;
+}
+
+.page-hero--get-involved {
+    background-image: linear-gradient(rgba(27, 38, 59, 0.72), rgba(27, 38, 59, 0.72)), url('../assets/marylandu.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.page-hero--contact {
+    background-image: linear-gradient(rgba(27, 38, 59, 0.72), rgba(27, 38, 59, 0.72)), url('../assets/baybridge.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.page-hero--team {
+    background-image: linear-gradient(rgba(27, 38, 59, 0.72), rgba(27, 38, 59, 0.72)), url('../assets/fortmchenry.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+/* ============================================
+   Impact Strip (Home Page)
+   ============================================ */
+.impact-strip {
+    background-image: linear-gradient(rgba(27, 38, 59, 0.78), rgba(27, 38, 59, 0.78)), url('../assets/baybridge.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: var(--spacing-2xl) var(--spacing-md);
+    text-align: center;
+    color: var(--white);
+}
+
+.impact-strip-quote {
+    font-family: var(--font-heading);
+    font-size: 2.25rem;
+    font-weight: 800;
+    line-height: 1.25;
+    margin-bottom: var(--spacing-md);
+}
+
+.impact-strip-text {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    max-width: 680px;
+    margin: 0 auto var(--spacing-xl);
+    color: rgba(255, 255, 255, 0.82);
+}
+
+@media (max-width: 768px) {
+    .impact-strip-quote {
+        font-size: 1.6rem;
+    }
+}
+
 .about-section,
 .contact-section {
-    padding: calc(80px + var(--spacing-xl)) var(--spacing-md) var(--spacing-2xl);
-    min-height: 100vh;
+    padding: var(--spacing-xl) var(--spacing-md) var(--spacing-2xl);
 }
 
 .section-title {
@@ -399,6 +475,20 @@ ul {
     color: var(--primary-navy);
     margin-bottom: var(--spacing-md);
     text-align: center;
+    position: relative;
+    padding-bottom: var(--spacing-sm);
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background-color: var(--accent-coral);
+    border-radius: 2px;
 }
 
 .section-subtitle {
@@ -448,6 +538,7 @@ ul {
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-md);
     transition: var(--transition-smooth);
+    border-left: 4px solid var(--accent-coral);
 }
 
 .bento-card:hover {
@@ -954,8 +1045,7 @@ ul {
    Get Involved Page
    ============================================ */
 .get-involved-section {
-    padding: calc(100px + var(--spacing-2xl)) 0 var(--spacing-2xl);
-    min-height: 100vh;
+    padding: var(--spacing-xl) 0 var(--spacing-2xl);
 }
 
 .section-subtitle {
@@ -1087,5 +1177,122 @@ ul {
 
     .checkbox-grid--small {
         grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ============================================
+   Meet The Team Page
+   ============================================ */
+.team-section {
+    padding: var(--spacing-2xl) var(--spacing-md);
+}
+
+.team-member-card {
+    display: grid;
+    grid-template-columns: 480px 1fr;
+    max-width: 1050px;
+    margin: 0 auto;
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+}
+
+.team-photo-col {
+    background-color: var(--primary-navy);
+    position: relative;
+    overflow: hidden;
+    min-height: 420px;
+}
+
+.team-photo-col img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.team-info-col {
+    padding: var(--spacing-2xl);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--spacing-md);
+}
+
+.team-role-badge {
+    display: inline-block;
+    background-color: var(--accent-coral);
+    color: var(--white);
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.4rem 1.1rem;
+    border-radius: 999px;
+    width: fit-content;
+}
+
+.team-name {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 2.75rem;
+    color: var(--primary-navy);
+    line-height: 1.1;
+    margin: 0;
+}
+
+.team-divider {
+    width: 56px;
+    height: 4px;
+    background-color: var(--accent-coral);
+    border-radius: 2px;
+}
+
+.team-quote {
+    border-left: 4px solid var(--accent-coral);
+    padding: var(--spacing-xs) 0 var(--spacing-xs) var(--spacing-md);
+    margin: 0;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--primary-navy);
+    line-height: 1.65;
+    background-color: rgba(27, 38, 59, 0.04);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+.team-bio p {
+    font-size: 1rem;
+    line-height: 1.85;
+    color: var(--text-dark);
+    margin-bottom: var(--spacing-sm);
+}
+
+.team-bio p:last-child {
+    margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+    .team-member-card {
+        grid-template-columns: 1fr;
+    }
+
+    .team-photo-col {
+        min-height: 360px;
+    }
+
+    .team-info-col {
+        padding: var(--spacing-lg);
+    }
+
+    .team-name {
+        font-size: 2rem;
     }
 }
